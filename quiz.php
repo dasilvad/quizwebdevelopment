@@ -19,30 +19,26 @@
 	</div>
 	
 	<h2 align="center">Quiz</h2>
+	
+	<?php 
+	    $perguntas = $_SESSION['perguntas_temp'];
+		$perguntas = explode("#", $perguntas);
+		
+		for ($index=0; $index < count($perguntas); $index++):
+	?>
 	<div style="background-color:#E8E8E8  ; color:black; padding:20px; margin-left: 300px; margin-right: 300px">
-	
-	<h2>Pergunta 1</h2>
-	  Qual é a pergunta? <br>
-	  Resposta correta:  <br>
-	  Resposta Errada 1:  <br>
-	  Resposta Errada 2:  <br>
-	  <?php $pergunta = "la pregunta";?>
-	<button onclick="editarPergunta('<?php echo $pergunta;?>')">Editar</button>
-	<button onclick="excluirPergunta('<?php echo $pergunta;?>')">Excluir</button>
-
-	
+	<h2>Pergunta <?php echo $index;?> </h2>
+	  Pergunta: <?php echo $perguntas[$index];?>  <br>
+	  Resposta correta:  <?php echo $perguntas[$index+1];?>  <br>
+	  Resposta Errada 1: <?php echo $perguntas[$index+2];?>  <br>
+	  Resposta Errada 2: <?php echo $perguntas[$index+3];?>  <br>
+	 
+	<button onclick="editarPergunta('<?php echo $index;?>')">Editar</button>
+	<button onclick="excluirPergunta('<?php echo $index;?>')">Excluir</button>
 	</div> <br><br>
+    <?php endfor;?>
 	
 	
-	<div style="background-color:#E8E8E8 ; color:black; padding:20px; margin-left: 300px; margin-right: 300px">
-	
-	<h2>Pergunta 1</h2>
-	  Qual é a pergunta? <br>
-	  Resposta correta:  <br>
-	  Resposta Errada 1:  <br>
-	  Resposta Errada 2:  <br>
-	
-	</div> <br><br>
 	
 	
 	<div id="perguntas" align="center" onsubmit="return validateFormPergunta()"> 
@@ -52,7 +48,7 @@
 		  Resposta Errada 1: <input type="text" name="resposta_incorreta1"><br>
 		  Resposta Errada 2: <input type="text" name="resposta_incorreta2" ><br>
 		  <input type="submit" name="salvar" value="Salvar">
-		  <input type="submit" name="proxima_pergunta" value="Próxima Pergunta">
+		  <!--   <input type="submit" name="proxima_pergunta" value="Próxima Pergunta"> -->
 		</form>
 	</div>
 	
