@@ -15,8 +15,7 @@ $resposta_incorreta2 = $_POST['resposta_incorreta2'];
 }else*/
 	if (isset($_POST['salvar'])){//submit button
 		$_SESSION['perguntas_temp'] = $_SESSION['perguntas_temp'].$pergunta."#".$resposta_correta."#".$resposta_incorreta1."#".$resposta_incorreta2."#";
-		$dados = $_SESSION['perguntas_temp'];
-		echo $dados;
+		
 		header('Location: http://localhost/Trabalho1/quiz.php');
 	//salvar no banco
 	}
