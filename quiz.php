@@ -44,14 +44,35 @@
 					return false;
 				}
 	         } 
+			 function baixar_JSON(){
+	 	        	document.getElementById("form_pergunta").action = "downloadFileJSON.php";
+	 	        	document.getElementById("form_pergunta").submit();
+			 }
+			 
+	         function exportarPerguntaJSON(pergunta, respostaCorreta, respostaIncorreta1, respostaIncorreta2){
+	        	document.getElementById("pergunta").value = pergunta;
+				document.getElementById("resposta_correta").value = respostaCorreta;
+				document.getElementById("resposta_incorreta1").value = respostaIncorreta1;
+				document.getElementById("resposta_incorreta2").value = respostaIncorreta2;
+	            document.getElementById("form_pergunta").action = "exportarJSON.php";
+	        	document.getElementById("form_pergunta").submit();
+					        	
+		     }
+
+	         function exportarPerguntaXML(pergunta, respostaCorreta, respostaIncorreta1, respostaIncorreta2){
+	        	 alert(pergunta + respostaCorreta + respostaIncorreta1 + respostaIncorreta2);
+		     }
+		     	
 	          
 	    </script>
-    
+	    
+    	
 
 </head>
 <body>
     
-    
+   
+	
 	<div align="right">
 		<form method="POST" action="logout.php">
 			<input type="submit" name="log_out" value="logout">
@@ -92,8 +113,17 @@
 		  <!--   <input type="submit" name="proxima_pergunta" value="Próxima Pergunta"> -->
 		</form>
 	</div>
+	 <div align="center">
+		<form method="POST" action="index.php">
+			<input type="submit" name="voltar" value="voltar">
+		</form>
+	</div>
 	
-	
+	<?php 
+    		if (isset($_GET['json_criado'])){
+				echo "<script type=\"text/javascript\"> baixar_JSON();</script>";
+			}
+	?>
 	
 
 <body>

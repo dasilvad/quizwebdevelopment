@@ -6,7 +6,7 @@
 		
 		if ($username == 'quiz' && $senha == 'quiz'){
 			$_SESSION['login']='logado';
-			header('Location: http://localhost/Trabalho1/quiz.php');
+			header('Location: http://localhost/Trabalho1/index.php');
 		}else{
 			$status = 'Usuário ou senha incorreto! Tente novamente.';
 		}

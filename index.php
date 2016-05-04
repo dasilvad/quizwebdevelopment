@@ -7,7 +7,12 @@
 	<html>
 	<head>
 		<title>Quiz</title>
-		
+		<script type="text/javascript">
+			function editarCriarQuiz(){
+				document.getElementById("form_editarCriarQuiz").action = "quiz.php";
+	        	document.getElementById("form_editarCriarQuiz").submit();
+			}
+		</script>
 	</head>
 	<body>
 		<div align="right">
@@ -17,22 +22,17 @@
 		</div>
 	
 		<div style="background-color:#E8E8E8  ; color:black; padding:20px; margin-left: 300px; margin-right: 300px">
-			<form> 
-				<label>Buscar Pergunta: </label><input type="text" name="buscar_pergunta" id="buscar_pergunta_input"><br>
-				<button type="button" id="btn_busca">Buscar</button>
+			<form method="post" id="form_editarCriarQuiz"> 
+				<label>Buscar Pergunta: </label><input type="text" name="buscar_pergunta" id="buscar_pergunta_input">
+				<button type="button" id="btn_busca">Buscar</button><br>
+				<button onclick="editarCriarQuiz()" >Editar ou Criar Quiz</button>
 			</form>
-			<button onclick="" >Adicionar Pergunta</button>
-			<button onclick="" >Listar Perguntas</button>
 		</div>
+		
 		
 	<table>
 		<thead>
-			<tr>
-			<th>Pergunta</th>
-			<th>Resposta Correta</th>
-			<th>Resposta Incorreta1</th>
-			<th>Resposta Incorreta2</th>
-			</tr>
+			
 		</thead>
 			<tbody>
 				
@@ -46,28 +46,32 @@
 				var tbody = document.querySelector("table tbody");
 				var ajax = new XMLHttpRequest();
 				var pergunta_digitada = this.value;
-		
-				ajax.onreadystatechange = function(){
-					
+				
+				ajax.onreadystatechange = function(){	
 					if(ajax.readyState == 4 && ajax.status == 200){
 						var  pergunta_do_servidor = JSON.parse(ajax.responseText);
 						var html = "";
 						//alert(ajax.responseText);
-					
+						html = "<br>";
 						for(pergunta of pergunta_do_servidor){
-							html += "<tr><td>" + pergunta.pergunta + "</td>"
-									+ "<td>" + pergunta.resposta_correta + "</td>"
-									+ "<td>" + pergunta.resposta_incorreta1 + "</td></tr>";
+// 							html += "<tr><td>" + pergunta.pergunta + "</td>"
+// 									+ "<td>" + pergunta.resposta_correta + "</td>"
+// 									+ "<td>" + pergunta.resposta_incorreta1 + "</td></tr>";
+
+							html+= "<tr><td>"+ "<div style=\"background-color:#E8E8E8  ; color:black; padding:20px; margin-left: 300px; margin-right: 300px\">"
+								+ "Pergunta: "+ pergunta.pergunta + "<br>"
+								+ "Resposta correta: "+ pergunta.resposta_correta +"<br>"
+							    + "Resposta Errada 1: "+ pergunta.resposta_incorreta1 +"<br>"
+							    + "Resposta Errada 2: "+ pergunta.resposta_incorreta2 +"<br>"
+							    +"</div> </td></tr>";
 							
 						}
 		
 						tbody.innerHTML = html;
 					}
-					
-				
 				}
-				
-				ajax.open("get", "buscar_pergunta.php?pergunta_digitada="+pergunta_digitada, true);
+				//alert(pergunta_digitada);
+				ajax.open("get", "buscar_pergunta.php?pergunta_digitada="+String (pergunta_digitada), true);
 				ajax.send(null);
 			});
 			

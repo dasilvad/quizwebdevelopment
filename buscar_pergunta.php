@@ -16,21 +16,15 @@ function startsWith($haystack, $needle, $case=false){
 $perguntas_json = array();
 
 for ($index=0; $index < count($perguntas) - 1; $index+=4){
-	
-		if (startsWith($perguntas[index], $pergunta_digitada, false) == 1){
+		if (startsWith($perguntas[$index], $pergunta_digitada, false) == 1){
 			$perguntas_json[] = array(
-					"pergunta" => "a",
-					"resposta_correta" => "b",
-					"resposta_incorreta1" => "c",
-					"resposta_incorreta2" => "d"
-			
+					"pergunta" => $perguntas[$index],
+					"resposta_correta" => $perguntas[$index+1],
+					"resposta_incorreta1" => $perguntas[$index+2],
+					"resposta_incorreta2" => $perguntas[$index+3]
 			);
 		}
 }
 
-
-
-//Esta função converte um array em um Javascript Object Notation - JSON
-// Fica mais fácil trabalhar assim do lado do Javascript
 echo json_encode($perguntas_json);
 ?>
