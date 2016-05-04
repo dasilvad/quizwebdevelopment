@@ -54,9 +54,6 @@
 						//alert(ajax.responseText);
 						html = "<br>";
 						for(pergunta of pergunta_do_servidor){
-// 							html += "<tr><td>" + pergunta.pergunta + "</td>"
-// 									+ "<td>" + pergunta.resposta_correta + "</td>"
-// 									+ "<td>" + pergunta.resposta_incorreta1 + "</td></tr>";
 
 							html+= "<tr><td>"+ "<div style=\"background-color:#E8E8E8  ; color:black; padding:20px; margin-left: 300px; margin-right: 300px\">"
 								+ "Pergunta: "+ pergunta.pergunta + "<br>"
@@ -70,7 +67,7 @@
 						tbody.innerHTML = html;
 					}
 				}
-				//alert(pergunta_digitada);
+				
 				ajax.open("get", "buscar_pergunta.php?pergunta_digitada="+String (pergunta_digitada), true);
 				ajax.send(null);
 			});

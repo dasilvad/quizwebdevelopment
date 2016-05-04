@@ -60,7 +60,7 @@
 		     }
 
 	         function exportarPerguntaXML(pergunta, respostaCorreta, respostaIncorreta1, respostaIncorreta2){
-	        	 alert(pergunta + respostaCorreta + respostaIncorreta1 + respostaIncorreta2);
+	        	 alert("to be done");
 		     }
 		     	
 	          
@@ -110,7 +110,6 @@
 		  Resposta Errada 2: <input type="text" name="resposta_incorreta2" id="resposta_incorreta2"><br>
 		  <input type="hidden" name="numero_pergunta" id="numero_pergunta">
 		  <input type="submit" name="salvar" value="Salvar">
-		  <!--   <input type="submit" name="proxima_pergunta" value="Próxima Pergunta"> -->
 		</form>
 	</div>
 	 <div align="center">
